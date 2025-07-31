@@ -1,6 +1,12 @@
 spring:
   application:
     name: idea-code-backend
+  # mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/idea_code
+    username: root
+    password: 123456
 
 server:
   port: 8123
