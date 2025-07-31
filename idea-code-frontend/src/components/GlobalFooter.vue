@@ -1,36 +1,29 @@
-<!-- src/components/GlobalFooter.vue -->
 <template>
-  <div class="global-footer">
+  <a-layout-footer class="footer">
     <div class="footer-content">
       © 2025 <a href="https://www.renkelin.vip" target="_blank" rel="noopener noreferrer">Idea Code</a>
     </div>
-  </div>
+  </a-layout-footer>
 </template>
 
 <script setup lang="ts">
-// GlobalFooter component
+// 无需额外的响应式数据
 </script>
 
 <style scoped>
-.global-footer {
+.footer {
+  background: #efefef;
   text-align: center;
-  padding: 24px 0;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.copyright {
+  margin: 0;
   color: #666;
   font-size: 14px;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.global-footer a {
-  color: #1890ff;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.global-footer a:hover {
-  color: #40a9ff;
 }
 </style>
