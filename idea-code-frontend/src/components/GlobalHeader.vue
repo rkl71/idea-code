@@ -24,12 +24,18 @@
         <div class="user-login-status">
           <div v-if="loginUserStore.loginUser.id">
             <a-dropdown>
-              <a-space>
+              <a-space class="user-dropdown">
                 <a-avatar :src="loginUserStore.loginUser.userAvatar" />
                 {{ loginUserStore.loginUser.userName ?? '无名' }}
+                <DownOutlined />
               </a-space>
               <template #overlay>
                 <a-menu>
+                  <a-menu-item @click="goToProfile">
+                    <UserOutlined />
+                    个人设置
+                  </a-menu-item>
+                  <a-menu-divider />
                   <a-menu-item @click="doLogout">
                     <LogoutOutlined />
                     退出登录
@@ -51,6 +57,7 @@
 import { computed, h, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { type MenuProps, message } from 'ant-design-vue'
+import { DownOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons-vue'
 import { userLoginUserStore } from '@/stores/loginUser.ts'
 import { userLogout } from '@/api/userController.ts'
 
@@ -111,6 +118,11 @@ const handleMenuClick: MenuProps['onClick'] = (e) => {
   }
 }
 
+// 跳转到个人设置页面
+const goToProfile = () => {
+  router.push('/user/profile')
+}
+
 // 退出登录
 const doLogout = async () => {
   const res = await userLogout()
@@ -124,7 +136,6 @@ const doLogout = async () => {
     message.error('退出登录失败，' + res.data.msg)
   }
 }
-
 </script>
 
 <style scoped>
@@ -152,5 +163,9 @@ const doLogout = async () => {
 
 .ant-menu-horizontal {
   border-bottom: none !important;
+}
+
+.user-dropdown {
+  cursor: pointer;
 }
 </style>
